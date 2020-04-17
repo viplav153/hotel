@@ -1,0 +1,78 @@
+{% extends 'base.html' %}<!--for linking base .html-->
+
+{% block content %}
+<style>
+.card-footer {
+    background-color:#004675;
+    color:#FFF;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+ } 
+</style>
+
+
+<div class="container">
+   <div class="row ">
+       <div class ="col-md-4">
+  <form action="{% url 'home' %}" method ="GET">
+  <div class="input-group mb-3">
+      <select class="form-control"  name="filter"placeholder="city"  >
+        <option selected value="all" >all Hotels</option>
+        <option value="delhi">Delhi</option>
+        <option value="pune">Pune</option>
+        <option value="mumbai">Mumbai</option>
+        <option value="chennai">Chennai</option>
+        <option value="patna">Patna</option>
+        
+      </select>
+      <input type="submit" value="filter"/>
+      
+    </form>
+
+</div>
+</div>
+</div>
+
+<div class ="container">
+
+{% for list in lists%}
+<div class="col-sm-4">
+    <div class="card">
+        
+        <div class="card-body">
+            <div class="col-md-6">
+           <b><h3 class="card-title float-left" >{{list.hotel_name}}</h3></b> 
+            <br>
+            <br>
+           
+           <h5 class="card-title float-left">{{list.city}}</h5>
+           <h5 class="card-title float-left">{{list.available_date}}</h5>
+        </div> 
+        <div class="col-md-6">
+            <img src="{{ list.image.url }}"  width="100" height="100" />
+          <b> <h4> <p class="card-text">start@2500</p></h4></b>
+        </div> 
+        </div>
+        <div class="card-footer">
+           <h3> BOOK HERE</h3>
+         </div>   
+    </div>
+</div>
+
+
+{%endfor%}
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+{%endblock%}
